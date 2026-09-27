@@ -513,64 +513,28 @@ a { color: inherit; }
   .about__figure { max-width: 460px; }
 }
 
-/* Sessions */
+/* Sessions: each session sits beside its own photo, so nothing is pinned or swapped while scrolling */
 
 .sessions { padding: var(--section) 0; }
-.sessions__layout {
+.session-list { list-style: none; }
+.session {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: clamp(40px, 7vw, 120px);
-  align-items: start;
-}
-.sessions__visual {
-  position: sticky;
-  top: calc(var(--header-h) + 32px);
-}
-.sessions__frame {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 3px;
-  overflow: hidden;
-  background: var(--sand);
-}
-.sessions__frame img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.03);
-  transition: opacity 0.9s var(--ease-soft), transform 1.6s var(--ease);
-}
-.sessions__frame img.is-active { opacity: 1; transform: none; }
-
-.session-list { list-style: none; counter-reset: none; }
-.session {
-  padding: clamp(36px, 4vw, 52px) 0;
+  gap: clamp(32px, 6vw, 104px);
+  align-items: center;
+  padding: clamp(40px, 5vw, 64px) 0;
   border-top: 1px solid var(--beige);
 }
-.session:last-child { border-bottom: 1px solid var(--beige); }
-.session__photo { display: none; }
-.session__name {
-  position: relative;
-  font-size: var(--step-3);
-  padding-left: 0;
-  transition: padding-left 0.6s var(--ease);
+.session:first-child { padding-top: 0; border-top: 0; }
+.session__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--sand);
 }
-.session__name::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 50%;
-  width: 10px; height: 10px;
-  margin-top: -3px;
-  border-radius: 50%;
-  background: var(--terracotta);
-  transform: scale(0);
-  transition: transform 0.6s var(--ease);
-}
-.session.is-active .session__name { padding-left: 26px; }
-.session.is-active .session__name::before { transform: scale(1); }
+.session__body { max-width: 540px; }
+.session__name { font-size: var(--step-3); }
 .session__meta {
   display: flex;
   flex-wrap: wrap;
@@ -587,18 +551,8 @@ a { color: inherit; }
 .session p { max-width: 54ch; color: var(--ink-soft); margin-bottom: 24px; }
 
 @media (max-width: 880px) {
-  .sessions__layout { grid-template-columns: 1fr; }
-  .sessions__visual { display: none; }
-  .session__photo {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    border-radius: 3px;
-    margin-bottom: 28px;
-  }
-  .session.is-active .session__name { padding-left: 0; }
-  .session__name::before { display: none; }
+  .session { grid-template-columns: 1fr; gap: 28px; }
+  .session__photo { aspect-ratio: 3 / 2; }
 }
 
 /* What happens in a session */

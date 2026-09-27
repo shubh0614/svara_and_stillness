@@ -192,38 +192,6 @@
     });
   }
 
-  /* Sessions: crossfade the sticky photo to match the session in view */
-  var sessions = document.querySelectorAll("[data-session]");
-  var sessionImgs = document.querySelectorAll("[data-session-img]");
-  function setSession(key) {
-    sessions.forEach(function (s) { s.classList.toggle("is-active", s.dataset.session === key); });
-    sessionImgs.forEach(function (img) {
-      var active = img.dataset.sessionImg === key;
-      if (active && img.loading === "lazy") img.loading = "eager";
-      img.classList.toggle("is-active", active);
-    });
-  }
-  if ("IntersectionObserver" in window && sessions.length) {
-    var sessionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setSession(entry.target.dataset.session);
-      });
-    }, { rootMargin: "-42% 0px -42% 0px" });
-    sessions.forEach(function (s) {
-      sessionObserver.observe(s);
-      s.addEventListener("mouseenter", function () { setSession(s.dataset.session); });
-      s.addEventListener("focusin", function () { setSession(s.dataset.session); });
-    });
-    /* Warm the other photos once the section is near, so the crossfade never waits on a download */
-    var warm = new IntersectionObserver(function (entries, obs) {
-      if (entries[0].isIntersecting) {
-        sessionImgs.forEach(function (img) { img.loading = "eager"; });
-        obs.disconnect();
-      }
-    }, { rootMargin: "600px 0px" });
-    warm.observe(document.getElementById("sessions"));
-  }
-
   /* Session steps: draw the wave when the section comes into view */
   var steps = document.querySelector("[data-steps]");
   if (steps) {

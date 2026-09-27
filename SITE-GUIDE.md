@@ -13,7 +13,7 @@
 
 | What | Where |
 | --- | --- |
-| Photos | Overwrite the files in `images/` using the same names. Portraits (`intro-bowl`, `session-*`, `facilitator`) look best around 960 x 1200. Instrument photos around 1200 x 800. Keep each under about 300 KB. |
+| Photos | Overwrite the files in `images/` using the same names. Portraits (`intro-bowl`, `facilitator`) look best around 960 x 1200. Session photos around 1200 x 900 (landscape). Instrument photos around 1200 x 800. Keep each under about 300 KB. |
 | Enquiry form | Sign up free at web3forms.com with info@svaranstillness.com, then paste the access key into `index.html` where it says `YOUR_WEB3FORMS_ACCESS_KEY`. Until then, the form opens WhatsApp with the visitor's details filled in. |
 | Facilitator name and story | "Your facilitator" section in `index.html` |
 | Session types, durations, group sizes | "Sessions" section in `index.html` (also update the Session dropdown in the form) |
