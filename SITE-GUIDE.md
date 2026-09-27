@@ -19,7 +19,6 @@
 | Session types, durations, group sizes | "Sessions" section in `index.html` (also update the Session dropdown in the form) |
 | Location | Last question in the FAQ |
 | Reschedule policy | "Can I reschedule?" in the FAQ |
-| Instagram link | Footer in `index.html` |
 
 Every placeholder spot has a comment in `index.html` starting with "Replace" or "Update".
 
